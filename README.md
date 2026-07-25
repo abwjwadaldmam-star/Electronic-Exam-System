@@ -1,3 +1,4 @@
+اسم المشروع:
 نظام الاختبارات الإلكترونية لجامعة إقليم سبأ
  Electronic Examination System for Saba Region University
 
@@ -392,76 +393,65 @@ Rejected (مرفوض)
 - واجهات سهلة الاستخدام.
 
 # هيكل المشروع
-
-يتكون المشروع من مجموعة من المجلدات والملفات التي تعمل معاً لتنفيذ وظائف النظام، ومن أهمها:
-
-- مجلد إدارة النظام.
-- مجلد عضو هيئة التدريس.
-- مجلد الطالب.
-- مجلد رئيس القسم.
-- مجلد الكنترول.
-- مجلد العميد.
-- ملفات الاتصال بقاعدة البيانات.
-- ملفات تسجيل الدخول.
-- ملفات التنسيق.
-- ملفات الجافاسكربت.
-- ملفات الصور
-- # هيكلية المشروع
-
-يتكون المشروع من مجموعة من المجلدات والملفات الرئيسية، كما يلي:
-Electronic Examination System
+electronic_exam_system/
 │
-├── admin/
-│   ├── dashboard.php
-│   ├── manage_users.php
-│   ├── manage_courses.php
-│   ├── manage_students.php
-│   ├── manage_instructors.php
-│   └── reports.php
+├── admin/                         [وحدة مدير النظام]
+│   ├── dashboard.php              (لوحة التحكم)
+│   ├── manage_users.php           (إدارة المستخدمين)
+│   ├── manage_courses.php         (إدارة المقررات)
+│   └── system_reports.php         (تقارير النظام)
 │
-├── instructor/
-│   ├── dashboard.php
-│   ├── create_exam.php
-│   ├── question_bank.php
-│   ├── edit_question.php
-│   ├── delete_question.php
-│   └── manage_exams.php
+├── instructor/                    [وحدة عضو هيئة التدريس]
+│   ├── dashboard.php              (لوحة التحكم)
+│   ├── create_exam.php            (إنشاء الاختبارات)
+│   ├── manage_bank.php            (بنك الأسئلة)
+│   ├── add_questions.php          (إضافة الأسئلة)
+│   ├── edit_question.php          (تعديل الأسئلة)
+│   ├── delete_question.php        (حذف الأسئلة)
+│   ├── approve_questions.php      (متابعة اعتماد الأسئلة)
+│   ├── link_exam_questions.php    (ربط الأسئلة بالاختبار)
+│   ├── get_live_exam_marks.php    (عرض درجات الاختبار)
+│   ├── process_create_exam.php    (معالجة إنشاء الاختبار)
+│   ├── process_add_to_bank.php    (إضافة إلى بنك الأسئلة)
+│   ├── process_random_questions.php (توليد الأسئلة العشوائية)
+│   ├── ajax_toggle_exam_question.php (إدارة الأسئلة عبر AJAX)
+│   ├── delete_exam.php            (حذف الاختبار)
+│   └── view_results.php           (عرض النتائج)
 │
-├── hod/
-│   ├── dashboard.php
-│   ├── review_questions.php
-│   └── approve_questions.php
+├── student/                       [وحدة الطالب]
+│   ├── dashboard.php              (لوحة التحكم)
+│   ├── student_dashboard.php      (الواجهة الرئيسية)
+│   ├── exam_gateway.php           (بوابة الدخول للاختبار)
+│   ├── quiz.php                   (واجهة الاختبار)
+│   ├── save_answer.php            (حفظ الإجابات)
+│   ├── process_exam.php           (معالجة الاختبار)
+│   └── result.php                 (عرض النتيجة)
 │
-├── student/
-│   ├── dashboard.php
-│   ├── exam_gateway.php
-│   ├── quiz.php
-│   ├── save_answer.php
-│   └── result.php
+├── hod/                           [وحدة رئيس القسم]
+│   ├── dashboard.php              (لوحة التحكم)
+│   ├── review_questions.php       (مراجعة الأسئلة)
+│   └── approve_questions.php      (اعتماد الأسئلة)
 │
-├── control/
-│   ├── dashboard.php
-│   └── reports.php
+├── dean/                          [وحدة العميد]
+│   └── dashboard.php              (لوحة التحكم)
 │
-├── dean/
-│   └── dashboard.php
+├── control/                       [وحدة الكنترول]
+│   └── dashboard.php              (لوحة التحكم)
 │
-├── config/
-│   ├── database.php
-│   ├── header.php
-│   ├── footer.php
-│   └── auth_check.php
+├── includes/                      [الملفات المشتركة]
+│   ├── config.php                 (الاتصال بقاعدة البيانات)
+│   ├── auth_check.php             (التحقق من الصلاحيات)
+│   ├── header.php                 (رأس الصفحات)
+│   └── footer.php                 (تذييل الصفحات)
 │
-├── assets/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   └── fonts/
+├── assets/                        [ملفات الواجهة]
+│   ├── css/                       (ملفات التنسيق)
+│   ├── js/                        (ملفات JavaScript)
+│   └── images/                    (شعار الجامعة والصور)
 │
-├── login.php
-├── logout.php
-├── index.php
-└── database.sql.
+├── index.php                      (الصفحة الرئيسية)
+├── login.php                      (تسجيل الدخول)
+└── logout.php                     (تسجيل الخروج)
 - 
 
 # قاعدة البيانات
@@ -505,19 +495,25 @@ Electronic Examination System
 6. فتح المشروع من خلال المتصفح.
 7. تسجيل الدخول حسب نوع المستخدم.
 
-## التوصيات المستقبلية
+##حالة المشروع: 
+مكتمل (Completed)
 
-- تطوير تطبيق للهواتف الذكية لتسهيل استخدام النظام.
-- إضافة نظام للإشعارات لإبلاغ المستخدمين بالمستجدات.
-- دعم أنواع إضافية من الأسئلة مثل الأسئلة المقالية.
-- تحسين واجهة المستخدم لتوفير تجربة استخدام أفضل.
-- تعزيز حماية النظام بإضافة وسائل أمان أكثر تطورًا.
+التوصيات المستقبلية:
 
+دعم إرسال الإشعارات للطلاب.
+تطوير تطبيق للهواتف الذكية.
+إضافة أنواع جديدة من الأسئلة.
+تحسين واجهة المستخدم.
+
+نوع النظام: تطبيق ويب (Web Application).
+بيئة التشغيل: الشبكة المحلية (Localhost/Intranet).
+لغة البرمجة: PHP.
+قاعدة البيانات: MySQL
 :
 فريق المشروع 
-- جيهان علي محمد الدمام  __ الرقم الجامعي __23210174
+- جيهان علي محمد الدمام  __ الرقم الجامعي __zzxcvb7555@gmail.com   23210174
 - اعتصام خليل القرشي    __ الرقم الجامعي __24210298
-- هيام علي سيف هذال    __ الرقم الجامعي __23210095
+- هيام علي سيف هذال    __ الرقم الجامعي __hh9912003@gmail.com   23210095
 
 # المشرف
 
